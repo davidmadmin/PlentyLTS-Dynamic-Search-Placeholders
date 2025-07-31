@@ -1,0 +1,17 @@
+{
+  "name": "dynamic-search-placeholder",
+  "description": "Zeigt dynamische Suchvorschläge im Suchfeld an.",
+  "author": "DEIN NAME",
+  "type": "template",
+  "namespace": "DynamicSearchPlaceholder",
+  "version": "1.0.0",
+  "compatibility": {
+    "plenty": ">=1.0.0"
+  },
+  "js": [
+    "resources/js/dynamic-placeholder.js"
+  ],
+  "css": [
+    "resources/css/dynamic-placeholder.css"
+  ]
+}

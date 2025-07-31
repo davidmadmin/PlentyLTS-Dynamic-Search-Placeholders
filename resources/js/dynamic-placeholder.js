@@ -1,12 +1,10 @@
 /**
  * Dynamic Search Placeholder Plugin
- * Zeigt dynamische Suchvorschläge im Suchfeld an und nutzt die Plugin-Konfiguration
+ * Zeigt animierte, konfigurierbare Suchvorschläge im Suchfeld an (Plentymarkets-ready)
+ * v1.0
  */
-
 (function () {
-    // ==== 1. Konfigurationswerte aus dem Plenty-Plugin laden ====
-    // Die Werte werden über die Template Engine in den Browser "geschoben".
-    // Fallback auf Default-Werte, falls kein Plenty-Config-Objekt gefunden wird.
+    // 1. Konfig aus globalem Objekt lesen (wird via Twig/Plenty ins HTML gepusht)
     const config = window.dynamicSearchPlaceholderConfig || {
         searchSelector: 'input[type="search"]',
         wordList: '',
@@ -16,86 +14,102 @@
         prefixMobile: 'Häufig gesucht:'
     };
 
-    // ==== 2. Konfiguration für Nutzer-Logik vorbereiten ====
-    const searchSelector = config.searchSelector || 'input[type="search"]';
-    const wordList = (config.wordList || '').split(',').map(w => w.trim()).filter(Boolean);
-    const emptyFocusText = config.emptyFocusText || 'Wonach suchen Sie?';
-    const prefixDesktop = config.prefixDesktop || 'Häufig gesucht:';
+    // 2. Variablen vorbereiten
+    const searchSelector   = config.searchSelector || 'input[type="search"]';
+    const wordList         = (config.wordList || '').split(',').map(w => w.trim()).filter(Boolean);
+    const emptyFocusText   = config.emptyFocusText || 'Wonach suchen Sie?';
+    const prefixDesktop    = config.prefixDesktop || 'Häufig gesucht:';
     const breakpointMobile = parseInt(config.breakpointMobile, 10) || 768;
-    const prefixMobile = config.prefixMobile || prefixDesktop;
+    const prefixMobile     = config.prefixMobile || prefixDesktop;
 
-    // ==== 3. Hilfsfunktion: Mobil/Desktop unterscheiden ====
+    // 3. Mobile/Desktop-Erkennung
     function isMobile() {
         return window.innerWidth <= breakpointMobile;
     }
+    function getPrefix() {
+        return isMobile() ? prefixMobile : prefixDesktop;
+    }
 
-    // ==== 4. Funktion: Vorschläge als Platzhalter anzeigen ====
-    function showDynamicPlaceholder(input) {
-        if (!input) return;
-        let prefix = isMobile() ? prefixMobile : prefixDesktop;
-        // Zeige einen zufälligen Begriff aus der Liste (optional: rotierend, z.B. alle 3s)
-        if (wordList.length > 0) {
-            const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-            input.setAttribute('placeholder', `${prefix} ${randomWord}`);
-        } else {
-            input.setAttribute('placeholder', prefix);
+    // 4. Animation-Logik für Platzhalter
+    function startAnimation(input, state) {
+        if (!input || !wordList.length) return;
+        let index = 0;
+        state.running = true;
+
+        function loop() {
+            if (!state.running || document.activeElement === input) return;
+            const prefix = getPrefix();
+            input.setAttribute('placeholder', `${prefix} ${wordList[index]}`);
+            index = (index + 1) % wordList.length;
+            state.timer = setTimeout(loop, 2000); // Alle 2 Sekunden nächsten Begriff
         }
+        loop();
     }
 
-    // ==== 5. Funktion: Standard-Placeholder bei leerem Feld im Fokus ====
-    function showEmptyFocusPlaceholder(input) {
-        if (!input) return;
-        input.setAttribute('placeholder', emptyFocusText);
+    function stopAnimation(state) {
+        state.running = false;
+        if (state.timer) clearTimeout(state.timer);
     }
 
-    // ==== 6. Event-Logik für das Suchfeld ====
+    // 5. Alles initialisieren
     document.addEventListener('DOMContentLoaded', function () {
         const inputs = document.querySelectorAll(searchSelector);
+        if (!inputs.length) return;
 
         inputs.forEach(input => {
-            let hasTyped = false;
+            const state = { running: false, timer: null };
 
-            // Setze Initial-Placeholder
-            showDynamicPlaceholder(input);
+            // Initial: Animierter Vorschlag (falls Liste da)
+            if (wordList.length) {
+                startAnimation(input, state);
+            } else {
+                input.setAttribute('placeholder', getPrefix());
+            }
 
-            // Bei Fokus, aber wenn Feld leer: "Wonach suchen Sie?"
+            // Fokus: Wenn leer, zeige leeren Fokus-Text. Animation stoppen.
             input.addEventListener('focus', function () {
-                if (!input.value) {
-                    showEmptyFocusPlaceholder(input);
-                }
+                stopAnimation(state);
+                if (!input.value) input.setAttribute('placeholder', emptyFocusText);
             });
 
-            // Sobald User tippt: Standard-Placeholder entfernen
+            // Eingabe: Placeholder entfernen beim Tippen. Bei "alles gelöscht" = leeren Fokus-Text.
             input.addEventListener('input', function () {
-                hasTyped = !!input.value;
-                if (hasTyped) {
+                if (input.value) {
                     input.setAttribute('placeholder', '');
-                } else {
-                    // Wenn gelöscht: wieder leeren Placeholder zeigen
-                    showEmptyFocusPlaceholder(input);
+                } else if (document.activeElement === input) {
+                    input.setAttribute('placeholder', emptyFocusText);
                 }
             });
 
-            // Bei Verlassen des Felds wieder Dynamik starten
+            // Blur: Animation wieder starten, oder statischen Vorschlag anzeigen.
             input.addEventListener('blur', function () {
-                showDynamicPlaceholder(input);
+                // Kurze Verzögerung, falls Suggest/Dropdown nach dem Blur kommt
+                setTimeout(function () {
+                    if (wordList.length) {
+                        startAnimation(input, state);
+                    } else {
+                        input.setAttribute('placeholder', getPrefix());
+                    }
+                }, 100);
             });
 
-            // Responsive: Bei Resize das Prefix anpassen
+            // Bei Window-Resize: Prefix für Placeholder anpassen (nur falls NICHT im Fokus)
             window.addEventListener('resize', function () {
                 if (document.activeElement !== input) {
-                    showDynamicPlaceholder(input);
+                    if (wordList.length) {
+                        // Falls Animation läuft, sofort Prefix anpassen
+                        stopAnimation(state);
+                        startAnimation(input, state);
+                    } else {
+                        input.setAttribute('placeholder', getPrefix());
+                    }
                 }
             });
         });
     });
 
-    // Optional: globales Config-Objekt für Debug
+    // Debug
     window.dynamicSearchPlaceholderDebug = {
-        config,
-        showDynamicPlaceholder,
-        showEmptyFocusPlaceholder
+        config
     };
-
 })();
-

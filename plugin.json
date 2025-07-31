@@ -1,17 +1,33 @@
 {
-  "name": "dynamic-search-placeholder",
-  "description": "Zeigt dynamische Suchvorschläge im Suchfeld an.",
-  "author": "DEIN NAME",
-  "type": "template",
-  "namespace": "DynamicSearchPlaceholder",
-  "version": "1.0.0",
-  "compatibility": {
-    "plenty": ">=1.0.0"
-  },
-  "js": [
-    "resources/js/dynamic-placeholder.js"
-  ],
-  "css": [
-    "resources/css/dynamic-placeholder.css"
-  ]
+    "name": "DynamicSearchPlaceholder",
+    "namespace": "DynamicSearchPlaceholder",
+    "type": "template",
+    "version": "1.0.0",
+    "description": "Zeigt dynamische Suchvorschläge im Suchfeld an.",
+    "author": "DEIN NAME",
+    "email": "DEINE EMAIL",
+    "isClosedSource": false,
+    "pluginIcon": "icon_plugin_xs.png",
+    "authorIcon": "icon_author_xs.png",
+    "containers": [
+        {
+            "key": "Template.Javascript",
+            "name": "Template: Javascript",
+            "description": "Bindet JavaScript für dynamische Platzhalter ein."
+        },
+        {
+            "key": "Template.Style",
+            "name": "Template: Style",
+            "description": "Bindet CSS für dynamische Platzhalter ein."
+        }
+    ],
+    "js": [
+        "resources/js/dynamic-placeholder.js"
+    ],
+    "css": [
+        "resources/css/dynamic-placeholder.css"
+    ],
+    "compatibility": {
+        "plenty": ">=1.0.0"
+    }
 }

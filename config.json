@@ -1,0 +1,32 @@
+{
+  "searchSelector": {
+    "type": "string",
+    "label": "CSS-Selektor für Suchfeld",
+    "default": "input[type=\"search\"]"
+  },
+  "wordList": {
+    "type": "text",
+    "label": "Liste der Suchbegriffe (Komma-getrennt)",
+    "default": ""
+  },
+  "emptyFocusText": {
+    "type": "string",
+    "label": "Text bei Fokus ohne Eingabe",
+    "default": "Wonach suchen Sie?"
+  },
+  "prefixDesktop": {
+    "type": "string",
+    "label": "Prefix Desktop",
+    "default": "Häufig gesucht:"
+  },
+  "breakpointMobile": {
+    "type": "number",
+    "label": "Breakpoint (px) für Mobil-Prefix",
+    "default": 768
+  },
+  "prefixMobile": {
+    "type": "string",
+    "label": "Prefix Mobil",
+    "default": "Häufig gesucht:"
+  }
+}

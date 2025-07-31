@@ -1,0 +1,58 @@
+{
+  "formatVersion": 1,
+  "menu": {
+    "global": {
+      "label": "Allgemeine Einstellungen",
+      "formFields": {
+        "searchSelector": {
+          "type": "inputText",
+          "label": "CSS-Selektor für Suchfeld",
+          "required": true,
+          "options": {
+            "defaultValue": "input[type=\"search\"]"
+          }
+        },
+        "wordList": {
+          "type": "inputText",
+          "label": "Liste der Suchbegriffe (Komma-getrennt)",
+          "required": false,
+          "options": {
+            "defaultValue": ""
+          }
+        },
+        "emptyFocusText": {
+          "type": "inputText",
+          "label": "Text bei Fokus ohne Eingabe",
+          "required": false,
+          "options": {
+            "defaultValue": "Wonach suchen Sie?"
+          }
+        },
+        "prefixDesktop": {
+          "type": "inputText",
+          "label": "Prefix Desktop",
+          "required": false,
+          "options": {
+            "defaultValue": "Häufig gesucht:"
+          }
+        },
+        "breakpointMobile": {
+          "type": "inputNumber",
+          "label": "Breakpoint (px) für Mobil-Prefix",
+          "required": false,
+          "options": {
+            "defaultValue": 768
+          }
+        },
+        "prefixMobile": {
+          "type": "inputText",
+          "label": "Prefix Mobil",
+          "required": false,
+          "options": {
+            "defaultValue": "Häufig gesucht:"
+          }
+        }
+      }
+    }
+  }
+}

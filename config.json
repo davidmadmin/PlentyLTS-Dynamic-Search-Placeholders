@@ -2,53 +2,59 @@
   "formatVersion": 1,
   "menu": {
     "global": {
-      "label": "Allgemeine Einstellungen",
+      "label": "config.global.label",
       "formFields": {
         "searchSelector": {
           "type": "inputText",
-          "label": "CSS-Selektor für Suchfeld",
+          "label": "config.global.searchSelector.label",
           "required": true,
           "options": {
+            "tooltip": "config.global.searchSelector.tooltip",
             "defaultValue": "input[type=\"search\"]"
           }
         },
         "wordList": {
           "type": "inputText",
-          "label": "Liste der Suchbegriffe (Komma-getrennt)",
+          "label": "config.global.wordList.label",
           "required": false,
           "options": {
+            "tooltip": "config.global.wordList.tooltip",
             "defaultValue": ""
           }
         },
         "emptyFocusText": {
           "type": "inputText",
-          "label": "Text bei Fokus ohne Eingabe",
+          "label": "config.global.emptyFocusText.label",
           "required": false,
           "options": {
+            "tooltip": "config.global.emptyFocusText.tooltip",
             "defaultValue": "Wonach suchen Sie?"
           }
         },
         "prefixDesktop": {
           "type": "inputText",
-          "label": "Prefix Desktop",
+          "label": "config.global.prefixDesktop.label",
           "required": false,
           "options": {
+            "tooltip": "config.global.prefixDesktop.tooltip",
             "defaultValue": "Häufig gesucht:"
           }
         },
         "breakpointMobile": {
           "type": "inputNumber",
-          "label": "Breakpoint (px) für Mobil-Prefix",
+          "label": "config.global.breakpointMobile.label",
           "required": false,
           "options": {
+            "tooltip": "config.global.breakpointMobile.tooltip",
             "defaultValue": 768
           }
         },
         "prefixMobile": {
           "type": "inputText",
-          "label": "Prefix Mobil",
+          "label": "config.global.prefixMobile.label",
           "required": false,
           "options": {
+            "tooltip": "config.global.prefixMobile.tooltip",
             "defaultValue": "Häufig gesucht:"
           }
         }

@@ -1,6 +1,6 @@
 {
   "searchSelector": {
-    "type": "string",
+    "type": "text",
     "label": "CSS-Selektor für Suchfeld",
     "default": "input[type=\"search\"]"
   },
@@ -10,12 +10,12 @@
     "default": ""
   },
   "emptyFocusText": {
-    "type": "string",
+    "type": "text",
     "label": "Text bei Fokus ohne Eingabe",
     "default": "Wonach suchen Sie?"
   },
   "prefixDesktop": {
-    "type": "string",
+    "type": "text",
     "label": "Prefix Desktop",
     "default": "Häufig gesucht:"
   },
@@ -25,7 +25,7 @@
     "default": 768
   },
   "prefixMobile": {
-    "type": "string",
+    "type": "text",
     "label": "Prefix Mobil",
     "default": "Häufig gesucht:"
   }

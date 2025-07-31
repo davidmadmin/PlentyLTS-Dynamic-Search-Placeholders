@@ -2,7 +2,7 @@
     "name": "DynamicSearchPlaceholder",
     "namespace": "DynamicSearchPlaceholder",
     "type": "template",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "Zeigt dynamische Suchvorschläge im Suchfeld an.",
     "author": "David Abdin",
     "email": "david.abdin@intra-tec.de",

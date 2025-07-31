@@ -1,0 +1,15 @@
+{
+  "config.global.label": "General settings",
+  "config.global.searchSelector.label": "CSS selector for search field",
+  "config.global.searchSelector.tooltip": "Specify the CSS selector of the search field, e.g. input[type=\"search\"] or .search-input.",
+  "config.global.wordList.label": "Search terms (comma-separated)",
+  "config.global.wordList.tooltip": "List of terms to be shown as animated search suggestions (e.g. screws, nuts, cylinders).",
+  "config.global.emptyFocusText.label": "Text for empty focused field",
+  "config.global.emptyFocusText.tooltip": "Placeholder text shown when the field is focused but empty.",
+  "config.global.prefixDesktop.label": "Prefix for desktop",
+  "config.global.prefixDesktop.tooltip": "Text displayed before the search suggestions in desktop mode.",
+  "config.global.breakpointMobile.label": "Breakpoint for mobile (px)",
+  "config.global.breakpointMobile.tooltip": "Pixel width at which mobile mode applies (default: 768).",
+  "config.global.prefixMobile.label": "Prefix for mobile",
+  "config.global.prefixMobile.tooltip": "Text displayed before the search suggestions in mobile mode."
+}

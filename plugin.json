@@ -1,6 +1,6 @@
 {
-    "name": "DynamicSearchPlaceholder",
-    "namespace": "DynamicSearchPlaceholder",
+    "name": "PlentyLTS-Dynamic-Search-Placeholders",
+    "namespace": "PlentyLTS-Dynamic-Search-Placeholders",
     "type": "template",
     "version": "0.0.1",
     "description": "Zeigt dynamische Suchvorschläge im Suchfeld an.",

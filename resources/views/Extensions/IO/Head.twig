@@ -1,7 +1,7 @@
 {# Inject plugin configuration into window object #}
 <script>
-  window.pluginDynamicPlaceholderConfig = {{ pluginConfig('DynamicSearchPlaceholders')|json_encode|raw }};
+  window.dynamicSearchPlaceholderConfig = {{ pluginConfig('DynamicSearchPlaceholders')|json_encode|raw }};
 </script>
 
 {# Load the plugin’s JavaScript file #}
-<script src="{{ plugin_path('DynamicSearchPlaceholders') ~ '/js/dynamicPlaceholder.js' }}"></script>
+<script src="{{ plugin_path('DynamicSearchPlaceholders') ~ '/js/dynamic-placeholder.js' }}"></script>

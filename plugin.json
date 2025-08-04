@@ -23,7 +23,7 @@
             "description": "Bindet CSS für dynamische Platzhalter ein."
         }
     ],
-    "js": [
+    "javaScriptFiles": [
         "resources/js/dynamic-placeholder.js"
     ],
     "css": [

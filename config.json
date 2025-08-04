@@ -2,59 +2,59 @@
   "formatVersion": 1,
   "menu": {
     "global": {
-      "label": "config.global.label",
+      "label": "Config.globalTab",
       "formFields": {
         "searchSelector": {
           "type": "inputText",
-          "label": "config.global.searchSelector.label",
+          "label": "Config.searchSelectorLabel",
           "required": true,
           "options": {
-            "tooltip": "config.global.searchSelector.tooltip",
+            "tooltip": "Config.searchSelectorTooltip",
             "defaultValue": "input[type=\"search\"]"
           }
         },
         "wordList": {
           "type": "inputText",
-          "label": "config.global.wordList.label",
+          "label": "Config.wordListLabel",
           "required": false,
           "options": {
-            "tooltip": "config.global.wordList.tooltip",
+            "tooltip": "Config.wordListTooltip",
             "defaultValue": ""
           }
         },
         "emptyFocusText": {
           "type": "inputText",
-          "label": "config.global.emptyFocusText.label",
+          "label": "Config.emptyFocusTextLabel",
           "required": false,
           "options": {
-            "tooltip": "config.global.emptyFocusText.tooltip",
+            "tooltip": "Config.emptyFocusTextTooltip",
             "defaultValue": "Wonach suchen Sie?"
           }
         },
         "prefixDesktop": {
           "type": "inputText",
-          "label": "config.global.prefixDesktop.label",
+          "label": "Config.prefixDesktopLabel",
           "required": false,
           "options": {
-            "tooltip": "config.global.prefixDesktop.tooltip",
+            "tooltip": "Config.prefixDesktopTooltip",
             "defaultValue": "Häufig gesucht:"
           }
         },
         "breakpointMobile": {
           "type": "inputNumber",
-          "label": "config.global.breakpointMobile.label",
+          "label": "Config.breakpointMobileLabel",
           "required": false,
           "options": {
-            "tooltip": "config.global.breakpointMobile.tooltip",
+            "tooltip": "Config.breakpointMobileTooltip",
             "defaultValue": 768
           }
         },
         "prefixMobile": {
           "type": "inputText",
-          "label": "config.global.prefixMobile.label",
+          "label": "Config.prefixMobileLabel",
           "required": false,
           "options": {
-            "tooltip": "config.global.prefixMobile.tooltip",
+            "tooltip": "Config.prefixMobileTooltip",
             "defaultValue": "Häufig gesucht:"
           }
         }
